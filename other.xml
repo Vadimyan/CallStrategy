@@ -1,0 +1,27 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="C:/Program Files/nodejs/node.exe" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Debug.Allow.Typing" value="true" />
+    <property name="NewCommitToolwindow.2" value="true" />
+    <property name="Non.Modal.Commit3" value="true" />
+    <property name="RD.Init.Cfg.2" value="true" />
+    <property name="RD.Init.DialogShown.Ide" value="true" />
+    <property name="RD.Switch.Laf" value="true" />
+    <property name="RiderNuGetViewSettings.Verbosity" value="5" />
+    <property name="SettingsSearchHistory" value="Whitespace inserts selected suggestion when completion popup is focused (blue selection)" />
+    <property name="Tutorials.1" value="true" />
+    <property name="ask.about.ctrl.y.shortcut" value="true" />
+    <property name="evlsprt3.193" value="13" />
+    <property name="file.gist.reindex.count" value="220" />
+    <property name="ignoreUltimateEdition" value="true" />
+    <property name="last_open_solution_path" value="C:/repos/mrk/Connector" />
+    <property name="last_selected_template" value="Class Library|.NET Core" />
+    <property name="last_selected_template_parameters" value="TargetFrameworkOverride=netstandard2.0;Language=C#;" />
+    <property name="settings.code.style.selected.tab.C#" value="Naming" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="toolwindow.stripes.buttons.info.shown" value="true" />
+    <property name="ts.lib.d.ts.version" value="3.7.2" />
+  </component>
+</application>
