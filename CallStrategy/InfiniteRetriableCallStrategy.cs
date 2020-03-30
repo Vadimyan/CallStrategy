@@ -36,6 +36,8 @@ namespace CallStrategy
 				catch (Exception ex)
 				{
 					++failedTries;
+					if (ExceptionFinder.FindException(ex, isExceptionRetriable) == null)
+						throw;
 					if (!exceptions.Contains(ex))
 						exceptions.Add(ex);
 					var currentMemory = GC.GetTotalMemory(true);

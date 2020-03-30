@@ -35,6 +35,8 @@ namespace CallStrategy
                 }
                 catch (Exception ex)
                 {
+                    if (ExceptionFinder.FindException(ex, isExceptionRetriable) == null)
+                        throw;
                     message = ex.Message;
                     if (failedTries < retriesBeforeStop - 1)
                     {

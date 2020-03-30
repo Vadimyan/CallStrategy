@@ -20,7 +20,7 @@ namespace CallStrategy
 			if (this.retriesBeforeStop <= 0)
 				this.retriesBeforeStop = 1;
 		}
-
+		
 		public void Call(Action action, Func<Exception, bool> isExceptionRetriable, Action beforeRetry = null)
 		{
 			var exceptions = new SortedSet<Exception>(new ObstinateCallExceptionComparer());
@@ -36,6 +36,8 @@ namespace CallStrategy
 				}
 				catch (Exception ex)
 				{
+					if (ExceptionFinder.FindException(ex, isExceptionRetriable) == null)
+						throw;
 					message = ex.Message;
 					if (failedTries < retriesBeforeStop - 1)
 					{
