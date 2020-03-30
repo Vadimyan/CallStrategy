@@ -5,7 +5,9 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Vadim Martynov</Authors>
         <PackageProjectUrl>https://github.com/Vadimyan/CallStrategy</PackageProjectUrl>
-        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageVersion>1.0.1</PackageVersion>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
 </Project>
