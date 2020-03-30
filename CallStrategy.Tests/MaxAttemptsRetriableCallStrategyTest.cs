@@ -11,6 +11,10 @@ namespace CallStrategy.Tests
         {
             public int Count { get; set; }
         }
+
+        private int CorrectAction(int x) => x * x;
+
+        private async Task<int> CorrectActionAsync(int x) => await Task.FromResult(x * x);
         
         private bool IOExceptionAction(CallCounter counter)
         {
@@ -23,7 +27,35 @@ namespace CallStrategy.Tests
             counter.Count++;
             throw new IOException();
         }
+        
+        [TestCase(2, 4)]
+        [TestCase(3, 9)]
+        [TestCase(-5, 25)]
+        public void MaxAttemptsCorrectMethodTest(int inputValue, int expectedResult)
+        {
+            var beforeRetryCount = 0;
+            var callStrategy = new MaxAttemptsRetriableCallStrategy(5, 1);
 
+            var result = callStrategy.Call(() => CorrectAction(inputValue), e => e is IOException, () => beforeRetryCount++);
+            
+            Assert.That(beforeRetryCount, Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+        
+        [TestCase(2, 4)]
+        [TestCase(3, 9)]
+        [TestCase(-5, 25)]
+        public async Task AsyncMaxAttemptsCorrectMethodTest(int inputValue, int expectedResult)
+        {
+            var beforeRetryCount = 0;
+            var callStrategy = new MaxAttemptsRetriableAsyncCallStrategy(5, 1);
+
+            var result = await callStrategy.CallAsync(() => CorrectActionAsync(inputValue), e => e is IOException, () => beforeRetryCount++);
+            
+            Assert.That(beforeRetryCount, Is.EqualTo(0));
+            Assert.That(result, Is.EqualTo(expectedResult));
+        }
+        
         [Test]
         public void MaxAttemptsFitExceptionTest()
         {
@@ -49,6 +81,8 @@ namespace CallStrategy.Tests
             Assert.That(beforeRetryCount, Is.EqualTo(0));
             Assert.That(callActionCount.Count, Is.EqualTo(1));
         }
+
+        
         
         [Test]
         public void AsyncMaxAttemptsFitExceptionTest()
